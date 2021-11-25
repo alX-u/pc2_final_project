@@ -21,3 +21,9 @@ services:
         volumes: 
           - ./jup_notebooks:/home/jovyan/work
   
+  plotly-dashboard:
+        image: dedier/plotly-dashboard
+        ports:
+          - 8050:8050
+        container_name: plotly-dashboard
+        

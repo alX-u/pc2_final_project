@@ -17,11 +17,13 @@ services:
         test: pg_isready -U postgres
         interval: 10s
         timeout: 5s
+        start-period: 
         retries: 5
   jupyter:
         image: jupyter/scipy-notebook
         ports:
           - 8888:8888
+        restart: on-failure
         container_name: scipy-notebook-container
         volumes: 
           - ./jup_notebooks:/home/jovyan/work
@@ -32,6 +34,7 @@ services:
         image: dedier/plotly-dashboard
         ports:
           - 8050:8050
+        restart: on-failure
         container_name: plotly-dashboard
         depends_on: 
           - db

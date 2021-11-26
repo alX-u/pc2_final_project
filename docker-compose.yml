@@ -20,10 +20,13 @@ services:
         container_name: scipy-notebook-container
         volumes: 
           - ./jup_notebooks:/home/jovyan/work
+        depends-on: 
+          - db
   
   plotly-dashboard:
         image: dedier/plotly-dashboard
         ports:
           - 8050:8050
         container_name: plotly-dashboard
-        
+        depends-on: 
+          - jupyter

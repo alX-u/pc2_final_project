@@ -8,6 +8,8 @@
 
 ## To run in play with docker: 
 
+(To copy in Play With Docker ctrl + insert, to paste shift + insert)
+
 1. Clone the git repository: `git clone https://github.com/alX-u/pc2_final_project`
 2. Enter the pc2_final_project directory: `cd pc2_final_project`
 3. Run `docker-compose up`

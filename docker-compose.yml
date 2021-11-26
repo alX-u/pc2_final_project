@@ -17,7 +17,6 @@ services:
         test: pg_isready -U postgres
         interval: 10s
         timeout: 5s
-        start-period: 
         retries: 5
   jupyter:
         image: jupyter/scipy-notebook

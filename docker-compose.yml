@@ -13,6 +13,11 @@ services:
         - ./postgres-data:/var/lib/postgresql/data
         # copy the sql script to create tables
         - ./sql/usda.sql:/docker-entrypoint-initdb.d/usda.sql
+      healthcheck:
+        test: pg_isready -U postgres
+        interval: 10s
+        timeout: 5s
+        retries: 5
   jupyter:
         image: jupyter/scipy-notebook
         ports:
@@ -21,7 +26,8 @@ services:
         volumes: 
           - ./jup_notebooks:/home/jovyan/work
         depends-on: 
-          - db
+          db:
+            condition: service_healthy
   
   plotly-dashboard:
         image: dedier/plotly-dashboard

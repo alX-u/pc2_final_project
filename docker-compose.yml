@@ -26,8 +26,7 @@ services:
         volumes: 
           - ./jup_notebooks:/home/jovyan/work
         depends_on: 
-          db:
-            condition: service_healthy
+          - db
   
   plotly-dashboard:
         image: dedier/plotly-dashboard
